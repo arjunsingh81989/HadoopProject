@@ -1,3 +1,8 @@
+/*
+	Find the total number of answers, posts, and comments created by Indian users.
+*/
+
+
 import java.io.IOException;
 import java.util.*;
 import java.util.regex.Pattern;
