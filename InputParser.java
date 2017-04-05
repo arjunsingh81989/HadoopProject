@@ -44,8 +44,6 @@ public class InputParser {
 
     /**
      * Represent a record in User data.
-     * Note: Implementing Serializable is not necessary. I intended to use
-     * to use User objects as WritableObject.
      */
     public static class User implements Serializable {
         private static final long serialVersionUID = 8212042039599545371L;
