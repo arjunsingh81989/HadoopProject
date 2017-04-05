@@ -1,3 +1,7 @@
+/*
+	Find the average age of users on the Stack Overflow site.
+*/
+
 import java.io.IOException;
 import java.util.*;
 
