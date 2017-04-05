@@ -71,7 +71,7 @@ public class ProblemA extends Configured implements Tool {
 		// Output of Job1 to the temporary output directory
 		FileOutputFormat.setOutputPath(job1, TEMP_OUTPUT); 
 		
-		// Tell Hadoop to wait for Job1 completed before running Job2
+		// Tell Hadoop to wait for Job1 completion before running Job2
 		job1.waitForCompletion(true);
 		
 		/*
@@ -97,7 +97,7 @@ public class ProblemA extends Configured implements Tool {
         job2.setReducerClass(MaxRepReducer.class);
         
         // Sort by descending order of keys (reputation values) so that
-        // the first record comes to the reducer is the maximum reputation
+        // the first record that comes to the reducer is the maximum reputation
         job2.setSortComparatorClass(LongWritable.DecreasingComparator.class);
 
         // Both input and output are in text format
@@ -109,14 +109,14 @@ public class ProblemA extends Configured implements Tool {
         // Output path for Job2 is the final output
         FileOutputFormat.setOutputPath(job2, outputPath);
 
-        // Tell Hadoop to wait for Job2 completed before cleaning up 
+        // Tell Hadoop to wait for Job2 completion before cleaning up 
         // the MR program
 		return job2.waitForCompletion(true) ? 0 : 1;
 	}
 	
 	/**
 	 * Mapper to read users data file to find user with the local maximum 
-	 * reputation (among of users processed by a certain mapper task).
+	 * reputation (among users processed by a certain mapper task).
 	 * 
 	 * Output: one Key-Value pair per mapper task
 	 *     Key: UserID
@@ -195,7 +195,7 @@ public class ProblemA extends Configured implements Tool {
 	 * Reducer to join output from UsersMapper and PostsMapper to find
 	 * user reputation, display name, and number of posts.
 	 *
-	 * Output: one per user (who with the local maximum reputation)
+	 * Output: one per user
 	 *     Key: Reputation value
 	 *     Value: A text of format "<UserName>,<PostCount>"
 	 */
